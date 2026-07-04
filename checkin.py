@@ -99,16 +99,18 @@ def main():
             msg = j.get("message", "")
             msg_lower = msg.lower()
 
-            if "checkin" in msg_lower:
-                ok += 1
-                points = j.get("points", "-")
-                status = "✅ 成功"
-            elif "repeat" in msg_lower or "already" in msg_lower:
-                repeat += 1
-                status = "🔁 已签到"
+                if j.get("code") == 0 or "points" in j or "list" in j:
+                if "observation logged" in msg_lower or "return tomorrow" in msg_lower or j.get("points", 1) == 0:
+                    repeat += 1
+                    status = "🔁 已签到"
+                else:
+                    ok += 1
+                    points = j.get("points", "-")
+                    status = "✅ 成功"
             else:
                 fail += 1
                 status = "❌ 失败"
+
 
             # 状态接口（允许失败）
             s = session.get(STATUS_URL, headers=headers, timeout=TIMEOUT)
