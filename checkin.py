@@ -99,7 +99,7 @@ def main():
             msg = j.get("message", "")
             msg_lower = msg.lower()
 
-                if j.get("code") == 0 or "points" in j or "list" in j:
+            if j.get("code") == 0 or "points" in j or "list" in j:
                 if "observation logged" in msg_lower or "return tomorrow" in msg_lower or j.get("points", 1) == 0:
                     repeat += 1
                     status = "🔁 已签到"
