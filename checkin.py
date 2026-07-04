@@ -99,7 +99,7 @@ def main():
             msg = j.get("message", "")
             msg_lower = msg.lower()
 
-            if "got" in msg_lower:
+            if "checkin" in msg_lower:
                 ok += 1
                 points = j.get("points", "-")
                 status = "✅ 成功"
