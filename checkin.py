@@ -88,7 +88,7 @@ def main():
         days = "-"
 
         try:
-            r = session.post(
+            r = session.put(
                 CHECKIN_URL,
                 headers=headers,
                 data=json.dumps(PAYLOAD),
